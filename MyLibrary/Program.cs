@@ -6,6 +6,7 @@ namespace MyLibrary
     {
         static void Main(string[] args)
         {
+            Library mylibrary = new Library();
             Console.WriteLine("Welcome to Your Library!");
             bool exit = false;
 
@@ -26,27 +27,27 @@ namespace MyLibrary
                     case "A":
                     case "a":
                         Console.WriteLine("You want to add a book");
-                        addBook();
+                        addBook(mylibrary);
                         break;
                     case "S":
                     case "s":
                         Console.WriteLine("You want to search a book");
-                        searchBook();
+                        searchBook(mylibrary);
                         break;
                     case "L":
                     case "l":
                         Console.WriteLine("You want to look at all the books");
-                        displayBooks();
+                        displayBooks(mylibrary);
                         break;
                     case "D":
                     case "d":
                         Console.WriteLine("You want to delete a book");
-                        deleteBook();
+                        deleteBook(mylibrary);
                         break;
                     case "E":
                     case "e":
                         Console.WriteLine("You want to edit a book");
-                        editBook();
+                        editBook(mylibrary);
                         break;
                     case "Q":
                     case "q":
@@ -59,23 +60,32 @@ namespace MyLibrary
                 }
             }
         }
-        static public void addBook()
+        static public void addBook(Library mylibrary)
         {
             //add a book to library
+            Console.Write("Title: ");
+            string t = Console.ReadLine();
+            Console.Write("Author: ");
+            string a = Console.ReadLine();
+            Book b = new Book(t, a);
+            Console.WriteLine($"Title: {b.Title}");
+            Console.WriteLine($"Author: {b.Author}");
+            mylibrary.AddBook(b);
         }
-        static public void searchBook()
+        static public void searchBook(Library mylibrary)
         {
             //search for book in library
         }
-        static public void displayBooks()
+        static public void displayBooks(Library mylibrary)
         {
+            Console.WriteLine(mylibrary);
             //display all books
         }
-        static public void editBook()
+        static public void editBook(Library mylibrary)
         {
             //edit existing book
         }
-        static public void deleteBook()
+        static public void deleteBook(Library mylibrary)
         {
             //delte a book
         }
